@@ -11,6 +11,7 @@
 <link rel="stylesheet" href="_ds/nocturne-dc07fc53-637b-4aba-ace3-2d965fdbc4a1/styles.css">
 <script src="_ds/nocturne-dc07fc53-637b-4aba-ace3-2d965fdbc4a1/_ds_bundle.js"></script>
 <script src="./image-slot.js"></script>
+<meta http-equiv="Cache-Control" content="no-cache, must-revalidate">
 <link rel="icon" type="image/svg+xml" href="assets/favicon.svg">
 <title>M7 Lounge · Salou &amp; Tarragona</title>
 <link rel="preconnect" href="https://fonts.googleapis.com">
@@ -29,9 +30,17 @@ a:hover{color:var(--gold-2)}
 .m7-quad{grid-template-columns:repeat(2,minmax(0,1fr))}
 @media(min-width:900px){.m7-quad{grid-template-columns:repeat(4,minmax(0,1fr))}}
 .m7-gal>div{min-width:0}
-@media(max-width:760px){.m7-gal{grid-template-columns:1fr !important;height:auto !important}.m7-gal>div:first-child{max-height:72vh;margin:0 auto}.m7-gal>div:last-child{grid-template-rows:auto auto !important}.m7-gal>div:last-child>div{aspect-ratio:1/1}}
+@media(max-width:760px){
+ .m7-gal{grid-template-columns:1fr !important;grid-template-rows:auto auto !important;height:auto !important;gap:12px}
+ .m7-gal>div:first-child{height:auto !important;width:100%;max-width:420px;margin:0 auto;aspect-ratio:9/16}
+ .m7-gal>div:last-child{height:auto !important;grid-template-columns:1fr 1fr !important;grid-template-rows:auto auto !important;gap:12px}
+ .m7-gal>div:last-child>div{height:auto !important;aspect-ratio:1/1}
+}
 @media(min-width:761px){.m7-gal>div:last-child>div{aspect-ratio:1/1}}
-.m7-nav{display:flex;flex-wrap:wrap;align-items:center;gap:12px 22px}
+.m7-nav{display:flex;flex-wrap:nowrap;align-items:center;gap:22px;flex:1 1 auto;min-width:0;overflow:hidden;justify-content:center}
+.m7-brand,.m7-cta{flex:0 0 auto}
+.m7-bar{flex-wrap:nowrap !important}
+@media(max-width:860px){.m7-bar{max-width:100% !important;flex-wrap:wrap !important}.m7-nav{flex-wrap:wrap;overflow:visible}}
 @media(max-width:1080px){.m7-bar{padding:12px 12px 12px 20px !important}.m7-nav{gap:8px 14px}.m7-nav>a{font-size:12.5px !important;letter-spacing:1.6px !important}}
 @media(max-width:860px){.m7-bar{border-radius:20px !important;flex-direction:column;align-items:stretch !important;gap:10px !important;padding:14px 16px !important}.m7-nav{justify-content:center;order:2}.m7-brand{text-align:center}.m7-cta{order:3;text-align:center}}
 @media(max-width:640px){.m7-nav>a{font-size:12px !important;letter-spacing:1.2px !important}}
@@ -81,7 +90,6 @@ a:hover{color:var(--gold-2)}
         <a href="#contacto" style="font-family:'Oswald',sans-serif;font-weight:500;font-size:14px;letter-spacing:2.2px;text-transform:uppercase;color:#f2ede4;white-space:nowrap;box-shadow:none;transition:background .2s ease,border-color .2s ease,color .2s ease" style-hover="color:var(--gold)">Contacto</a>
       </nav>
       <div class="m7-cta" style="display:flex;align-items:center;justify-content:center;gap:10px">
-        <button type="button" onClick="{{ openPicker }}" aria-label="Reservar" style="width:44px;height:44px;border-radius:999px;border:1px solid rgba(242,237,228,.14);display:grid;place-items:center;color:var(--hueso);font-size:19px;background:#141415;transition:background .2s ease,color .2s ease,border-color .2s ease" style-hover="background:var(--oro);color:var(--negro);border-color:var(--oro)"><i class="ph ph-chat-circle"></i></button>
         <button type="button" onClick="{{ openPicker }}" style="font-family:'Poppins',sans-serif;font-weight:600;font-size:13px;letter-spacing:2px;text-transform:uppercase;color:var(--negro);background:linear-gradient(180deg,#f4d689,#e0a92f);border:0;cursor:pointer;border-radius:999px;padding:14px 24px;white-space:nowrap;box-shadow:none;transition:background .2s ease" style-hover="background:#f4d689">Reservar</button>
       </div>
     </div>
@@ -100,16 +108,18 @@ a:hover{color:var(--gold-2)}
         <button type="button" onClick="{{ openPicker }}" style="font-family:'Poppins',sans-serif;font-weight:700;font-size:15px;letter-spacing:2.5px;text-transform:uppercase;color:var(--negro);background:var(--oro);padding:22px 40px;min-width:330px;border:0;cursor:pointer;box-shadow:none;transition:background .2s ease" style-hover="background:var(--oro-hover)">Reservar mesa</button>
         <a href="#carta" style="font-family:'Poppins',sans-serif;font-weight:500;font-size:15px;letter-spacing:2.5px;text-transform:uppercase;color:var(--hueso);background:transparent;padding:22px 40px;min-width:240px;text-align:center;border:1px solid rgba(245,245,240,.6);box-shadow:none;transition:background .2s ease,border-color .2s ease" style-hover="border-color:var(--hueso);background:rgba(245,245,240,.08)">Ver carta</a>
       </div>
+      <div style="margin-top:22px;display:flex;justify-content:center">
+        <a href="#locales" style="display:flex;align-items:center;gap:8px;font-family:'Poppins',sans-serif;font-weight:500;font-size:12px;letter-spacing:2px;text-transform:uppercase;color:var(--hueso);opacity:.8;padding:10px 18px;border:1px solid rgba(245,245,240,.28);border-radius:999px;transition:background .2s ease,border-color .2s ease,opacity .2s ease" style-hover="opacity:1;border-color:var(--oro);color:var(--oro)"><i class="ph ph-map-pin" style="font-size:15px"></i>Ubicación y horario</a>
+      </div>
     </div>
   </section>
 
   <div style="border-top:1px solid rgba(242,237,228,.08);border-bottom:1px solid rgba(242,237,228,.08);background:#0e0e0f">
     <div style="max-width:1160px;margin:0 auto;padding:22px 24px;display:flex;flex-wrap:wrap;gap:14px 40px;justify-content:center;align-items:center;font-family:'Oswald',sans-serif;letter-spacing:3px;text-transform:uppercase;font-size:14px;color:rgba(242,237,228,.62)">
-      <span style="color:var(--gold)">+50 sabores de shisha</span>
       <span>Cocktails &amp; Shishas</span>
       <span>Terraza</span>
       <span>Fútbol en directo</span>
-      <span>Todos los días · desde las 17:00</span>
+      <span>Comfort</span>
     </div>
   </div>
 
@@ -127,7 +137,7 @@ a:hover{color:var(--gold-2)}
       </div>
       <div style="background:var(--negro);padding:38px 30px;border:1px solid rgba(242,237,228,.08)">
         <i class="ph ph-umbrella" style="font-size:30px;color:var(--gold)"></i>
-        <h5 style="margin:18px 0 0;font-family:'Oswald',sans-serif;font-weight:500;font-size:20px;letter-spacing:1.5px;text-transform:uppercase">Terraza climatizada</h5>
+        <h5 style="margin:18px 0 0;font-family:'Oswald',sans-serif;font-weight:500;font-size:20px;letter-spacing:1.5px;text-transform:uppercase">Terraza climatizada<span style="display:block;margin-top:5px;font-family:'Poppins',sans-serif;font-weight:400;font-size:11px;letter-spacing:1.4px;text-transform:uppercase;color:rgba(242,237,228,.45)">Terraza de Salou</span></h5>
         <p style="margin:10px 0 0;font-size:14px;line-height:1.7;color:rgba(242,237,228,.6)">Semicerrada y con estufas: cómoda también las noches frescas.</p>
       </div>
       <div style="background:var(--negro);padding:38px 30px;border:1px solid rgba(242,237,228,.08)">
