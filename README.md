@@ -1,25 +1,41 @@
 # M7 Lounge — web
 
-Sitio estático de una sola página (Salou y Tarragona).
-
-## Publicar
-
-**GitHub Pages:** sube todo el contenido de esta carpeta a la raíz del repositorio y activa Pages (Settings → Pages → Deploy from branch → `main` / `/root`). El archivo `.nojekyll` ya está incluido.
-
-**Dominio propio (yeraysun.com):** Settings → Pages → Custom domain, y en tu DNS un registro CNAME apuntando a `<usuario>.github.io`.
-
-**Hosting clásico:** sube la carpeta por FTP al directorio público (`public_html`).
+Sitio estático (HTML + CSS + JS, sin dependencias ni compilación) de M7 Lounge, Salou y Tarragona.
 
 ## Estructura
 
-- `index.html` — la página
-- `support.js`, `image-slot.js` — runtime necesario
-- `assets/` — fotos optimizadas
-- `uploads/` — vídeos (cabecera y galería) y fotos de cócteles
-- `_ds/` — hoja de estilos base
+| Archivo | Qué es |
+|---|---|
+| `index.html` | La página (generada, ver abajo) |
+| `styles.css` | Estilos y tipografías locales |
+| `main.js` | Interacciones: cookies, carta, horario en vivo, galería, animaciones |
+| `menu.js` | **La carta.** Edita aquí productos y precios; no hace falta regenerar nada |
+| `aviso-legal.html`, `privacidad.html`, `cookies.html` | Páginas legales (generadas) |
+| `assets/img`, `assets/video`, `assets/fonts` | Fotos WebP, vídeos y fuentes |
+| `tools/` | Plantilla y script de montaje (no se publica nada desde aquí) |
+| `_legacy/` | Web anterior y sus archivos. Se puede borrar |
 
-## Notas
+## Cambiar cosas
 
-- Los vídeos van silenciados y en bucle (requisito de los navegadores para autoplay).
-- Los mapas son iframes de Google Maps: necesitan conexión.
-- Reservas: enlaces a WhatsApp +34 682 078 809.
+- **Precios o productos:** `menu.js`. Si tocas las shishas, ejecuta además `python3 tools/build.py` para actualizar la sección de sabores.
+- **Textos, cócteles destacados, galería:** `tools/index.src.html` y `tools/build.py`, y luego `python3 tools/build.py`.
+- **Textos legales:** `tools/legal/*.html` y `python3 tools/build.py`.
+
+`build.py` necesita Python 3 con Pillow y Node. Actualiza solo el `?v=` de CSS y JS para evitar la caché.
+
+## Pendiente antes de publicar
+
+En las tres páginas legales faltan los datos del titular (razón social, NIF, domicilio y email), marcados en rojo como PENDIENTE. Están en `tools/legal/`.
+
+## Publicar
+
+- **GitHub Pages:** rama `main`, carpeta raíz. `.nojekyll` incluido.
+- **Hosting clásico (Hostinger, etc.):** sube la carpeta a `public_html`. `.htaccess` incluido (caché y página 404).
+
+## Vista previa en local
+
+```
+python3 -m http.server 8765
+```
+
+y abre `http://localhost:8765`. Vista móvil rápida: `http://localhost:8765/tools/preview-mobile.html`.
